@@ -1,0 +1,73 @@
+<div id="blocklyDiv" style="height: 600px; width: 1000px;"></div>
+<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+  <category name="Logic" colour="#FF0000">
+    <block type="ext_logic_andor"></block>
+    <block type="ext_logic_not"></block>
+    <block type="ext_logic_bool"></block>
+    <block type="ext_logic_random"></block>
+    <block type="ext_logic_compare"></block>
+    <block type="ext_logic_ternary"></block>
+    <block type="ext_logic_if"></block>
+  </category>
+  <sep></sep>
+  <category name="String" colour="#FF6600">
+    <block type="ext_string_literal"></block>
+    <block type="ext_string_length"></block>
+    <block type="ext_string_includes"></block>
+    <block type="ext_string_reverse"></block>
+    <block type="ext_string_sub"></block>
+    <block type="ext_string_letter"></block>
+    <block type="ext_string_replace"></block>
+  </category>
+  <category name="Number" colour="#FFCC00">
+    <block type="ext_number_literal"></block>
+    <block type="ext_number_arithmetic"></block>
+  </category>
+  <category name="Integer" colour="#CCFF00">
+    <block type="ext_integer_literal"></block>
+  </category>
+  <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+</xml>
+<style>
+  .blocklyPathDark, .blocklyPathLight {
+    display: none
+  }
+</style>
+<script src="blockly_compressed.js"></script>
+<script src="blocks_compressed.js"></script>
+<script src="acorn_interpreter.js"></script>
+<script src="msg.js"></script>
+<script src="toolbox.js"></script>
+<script src="script.js"></script>
+<script src="msg/en.js"></script>
+<script src="own_blocks.js"></script>
+<script>
+var toolbox = document.getElementById("toolbox");
+var options = { 
+	toolbox: toolbox, 
+	collapse: true,
+	comments: true,
+	disable: true,
+	maxBlocks: 10000,
+	trashcan: true,
+	horizontalLayout: false,
+	toolboxPosition: 'start',
+	css: true,
+	media: 'https://unnamedbruh.github.io/blockly-media/',
+	RTL: false,
+	scrollbars: true,
+	sounds: true,
+	oneBasedIndex: false
+}
+var workspace = Blockly.inject("blocklyDiv", options);
+var workspaceBlocks = document.getElementById("workspaceBlocks"); 
+Blockly.Xml.domToWorkspace(workspace, workspaceBlocks);
+</script>
+<br>
+<pre id="j"></pre>
+<button onclick="var code = Blockly.JavaScript.workspaceToCode(workspace);document.getElementById('j').innerText = code">
+  Show the JavaScript Code
+</button> 
+<button onclick="var code = Blockly.JavaScript.workspaceToCode(workspace);document.getElementById('j').innerText = code;eval(code)">
+  Run
+</button>
